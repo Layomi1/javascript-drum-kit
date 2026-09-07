@@ -1,9 +1,20 @@
-const keys = document.getElementsByClassName("keys");
-const key = document.querySelectorAll("button");
-console.log(key);
+const keys = document.querySelectorAll(".key");
 
-key.forEach((element) =>
-  element.addEventListener("click", (e) => {
-    e.classList.add("playing");
-  }),
-);
+function playSound(e) {
+  const audio = document.querySelector(`audio[data-key='${e.keyCode}']`);
+  const key = document.querySelector(`.key[data-key='${e.keyCode}']`);
+
+  if (!audio) return;
+  audio.currentTime = 0; //rewind to start
+  audio.play();
+  key.classList.add("playing");
+}
+
+window.addEventListener("keydown", playSound);
+
+function removeAnimation(e) {
+  if (e.propertyName !== "transform") return;
+  this.classList.remove("playing");
+}
+
+keys.forEach((key) => key.addEventListener("transitionend", removeAnimation));
