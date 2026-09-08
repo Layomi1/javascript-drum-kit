@@ -1,1 +1,2 @@
-JavaScript drum kit is a simple app implemented using HTML,CSS and JS in which each key gives different sounds like a piano.
+JavaScript drum kit is a simple app implemented using HTML,CSS and JS.
+ things learnt are using key events and adding audio
